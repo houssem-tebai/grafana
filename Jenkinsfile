@@ -18,7 +18,7 @@ pipeline {
                 echo 'Building....'
                 sh 'pwd'
                 sh 'whoami'
-                sh 'll'
+                sh 'ls -l'
                 sh 'chmod +x ./docker-env.sh'
                 sh './docker-env.sh'
                 sh "docker build -t smart-etech/grafana:${commit_id} ."
