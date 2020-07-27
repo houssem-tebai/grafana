@@ -18,7 +18,7 @@
   "links": [],
   "panels": [
     {
-      "content": "\n# temperature/Humidity Dashboard\n\n\n",
+      "content": "\n# new temperature/Humidity Dashboard\n\n\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
