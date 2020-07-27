@@ -16,8 +16,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh "pwd"
-                sh "whoami"
+                sh 'pwd'
+                sh 'whoami'
+                sh 'll'
+                sh 'chmod +x ./docker-env.sh'
                 sh './docker-env.sh'
                 sh "docker build -t smart-etech/grafana:${commit_id} ."
                 echo 'build complete'
