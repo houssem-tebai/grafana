@@ -1,0 +1,21 @@
+{
+  "config": {
+    "grafana": {
+      "envs": {
+        "local1": {
+          "url": "http://localhost:8081",
+          "username": "admin",
+          "password": "hOaL3kkysM3yyq29iPNRrpeWjjlOF1nckudmEkd3"
+        },
+        "local2": {
+          "url": "http://localhost:8083",
+          "username": "admin",
+          "password": "52351774"
+        }
+      }
+    },
+    "context": {
+      "grafana": "local2"
+    }
+  }
+}

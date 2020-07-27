@@ -1,0 +1,8 @@
+datasources:
+    - name: censors
+      url: 10.103.152.43:5432
+      user: postgres
+      password: SUxEmRyJ4P
+      database: logger
+      jsonData:
+        sslmode: disable

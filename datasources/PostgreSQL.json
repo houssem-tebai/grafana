@@ -1,0 +1,18 @@
+{
+  "orgId": 1,
+  "name": "PostgreSQL",
+  "type": "postgres",
+  "typeLogoUrl": "public/app/plugins/datasource/postgres/img/postgresql_logo.svg",
+  "access": "proxy",
+  "url": "10.103.152.43:5432",
+  "password": "",
+  "user": "postgres",
+  "database": "inventory",
+  "basicAuth": false,
+  "isDefault": true,
+  "jsonData": {
+    "postgresVersion": 903,
+    "sslmode": "disable"
+  },
+  "readOnly": false
+}

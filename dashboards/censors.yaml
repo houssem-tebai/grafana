@@ -1,0 +1,13 @@
+# # config file version
+apiVersion: 1
+
+providers:
+ - name: 'censors'
+   orgId: 1
+   folder: ''
+   type: file
+   disableDeletion: true
+   editable: false
+   updateIntervalSeconds: 10
+   options:
+     path: /var/lib/grafana/dashboards/
