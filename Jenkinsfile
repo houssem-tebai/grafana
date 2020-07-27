@@ -18,7 +18,7 @@ pipeline {
                 echo 'Building....'
                 sh "pwd"
                 sh "whoami"
-                sh 'eval $(minikube -p minikube docker-env)'
+                sh './docker-env.sh'
                 sh "docker build -t smart-etech/grafana:${commit_id} ."
                 echo 'build complete'
             }
