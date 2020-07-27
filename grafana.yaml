@@ -16,7 +16,7 @@ spec:
         app: grafana
     spec:
       containers:
-      - image: smart-etech/grafana
+      - image: smart-etech/grafana:test
         name: grafana
         ports:
         - containerPort: 3000
