@@ -1,17 +1,25 @@
 pipeline {
     agent any
 
+    def commit_id
+   stage('Preparation') {
+     checkout scm
+     sh "git rev-parse --short HEAD > .git/commit-id"                        
+     commit_id = readFile('.git/commit-id').trim()
+   }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'docker build -t smart-etech/grafana: .'
+                echo 'Building....'
+                sh 'docker build -t smart-etech/grafana:${commit_id} .'
                 echo 'build complete'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying to Kubernetes'
+                sh 'kubectl get all -n grafana'
                 
             }
         }
