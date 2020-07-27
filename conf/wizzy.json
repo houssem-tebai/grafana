@@ -3,7 +3,7 @@
     "grafana": {
       "envs": {
         "local1": {
-          "url": "http://localhost:8081",
+          "url": "http://localhost:8082",
           "username": "admin",
           "password": "hOaL3kkysM3yyq29iPNRrpeWjjlOF1nckudmEkd3"
         },
@@ -15,7 +15,7 @@
       }
     },
     "context": {
-      "grafana": "local2"
+      "grafana": "local1"
     }
   }
 }

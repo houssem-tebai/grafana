@@ -1,0 +1,930 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "content": "\n# temperature/Humidity Dashboard\n\n\n",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 8,
+        "y": 0
+      },
+      "id": 22,
+      "mode": "markdown",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  entity = 'temperature'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'temperature'"
+              ],
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  entity = 'humidity'\nORDER BY 1,2",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'humidity'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:250",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:251",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "\n# Temperature\n\n\n",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 4,
+        "y": 11
+      },
+      "id": 20,
+      "mode": "markdown",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "text"
+    },
+    {
+      "content": "\n# humidity\n\n\n",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 17,
+        "y": 11
+      },
+      "id": 18,
+      "mode": "markdown",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 13
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^temperature$/",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'humidity'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'humidity'"
+              ],
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'temperature'\nORDER BY 1,2",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'temperature'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "current",
+      "type": "stat"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 60,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 50
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 7,
+        "y": 13
+      },
+      "id": 10,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'temperature'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'temperature'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "current",
+      "type": "gauge"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 13,
+        "y": 13
+      },
+      "id": 8,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'humidity'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'humidity'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "current",
+      "type": "gauge"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 19,
+        "y": 13
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'humidity'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'humidity'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "mean",
+      "type": "stat"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 50,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 40
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "id": 16,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'temperature'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'temperature'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "max",
+      "type": "bargauge"
+    },
+    {
+      "datasource": "censors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 11,
+        "x": 13,
+        "y": 21
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "entity",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  entity AS metric,\n  state\nFROM censors\nWHERE\n  $__timeFilter(\"timestamp\") AND\n  entity = 'humidity'\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "censors",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": [
+                "entity",
+                "=",
+                "'humidity'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "max",
+      "type": "bargauge"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 25,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2019-10-11T23:48:03.000Z",
+    "to": "2019-10-11T23:49:10.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "censors",
+  "uid": "eNkVD1nGk"
+}
