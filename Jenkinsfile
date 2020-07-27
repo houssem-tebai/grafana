@@ -16,6 +16,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
+                sh "pwd"
+                sh "whoami"
                 sh 'eval $(minikube docker-env)'
                 sh "docker build -t smart-etech/grafana:${commit_id} ."
                 echo 'build complete'
