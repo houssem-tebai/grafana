@@ -22,7 +22,7 @@ pipeline {
                 sh 'minikube status'
                 sh 'chmod +x ./docker-env.sh'
                 sh './docker-env.sh'
-                sh "docker build -t smart-etech/grafana:${commit_id} ."
+                sh "sudo docker build -t smart-etech/grafana:${commit_id} ."
                 echo 'build complete'
             }
         }
