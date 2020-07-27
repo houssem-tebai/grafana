@@ -16,10 +16,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'scp -i $(minikube ssh-key) ./Dockerfile  docker@$(minikube ip):~/'
-                sh 'minikube ssh'
-                sh 'whoami'
-                sh "docker build -t smart-etech/grafana:${commit_id} ."
+                sh 'scp -r -i $(minikube ssh-key) ./*  docker@$(minikube ip):~/'
+                sh "minikube ssh 'docker build -t smart-etech/grafana:${commit_id} .'"
                 echo 'build complete'
             }
         }
