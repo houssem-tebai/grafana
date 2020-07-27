@@ -1,5 +1,4 @@
-pipeline {
-    agent any
+node {
 
     def commit_id
     
