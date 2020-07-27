@@ -7,8 +7,10 @@ pipeline {
         stage('Preparation') {
             steps {
                 checkout scm
-                sh "git rev-parse --short HEAD > .git/commit-id"                        
-                commit_id = readFile('.git/commit-id').trim()
+                sh "git rev-parse --short HEAD > .git/commit-id"
+                script {                        
+                    commit_id = readFile('.git/commit-id').trim()
+                }
             }
         }
         stage('Build') {
