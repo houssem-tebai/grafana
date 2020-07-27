@@ -16,19 +16,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'pwd'
+                sh 'scp -i $(minikube ssh-key) ./Dockerfile  docker@$(minikube ip):~/'
+                sh 'minikube ssh'
                 sh 'whoami'
-                sh 'ls -l'
-                sh 'minikube status'
-                sh 'chmod +x ./docker-env.sh'
-                sh './docker-env.sh'
-                sh "sudo docker build -t smart-etech/grafana:${commit_id} ."
+                sh "docker build -t smart-etech/grafana:${commit_id} ."
                 echo 'build complete'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying to Kubernetes'
+                sh ''
                 sh 'kubectl get all -n grafana'
                 
             }
