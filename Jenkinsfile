@@ -19,6 +19,7 @@ pipeline {
                 sh 'pwd'
                 sh 'whoami'
                 sh 'ls -l'
+                sh 'minikube stats'
                 sh 'chmod +x ./docker-env.sh'
                 sh './docker-env.sh'
                 sh "docker build -t smart-etech/grafana:${commit_id} ."
