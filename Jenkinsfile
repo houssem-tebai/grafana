@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Pushing to nexus private repo....'
                 sh "sudo docker build -t localhost:8090/grafana:${commit_id} ."
-                sh "sudo docker push localhost:8090/grafana:${commit_id} .'"
+                sh "sudo docker push localhost:8090/grafana:${commit_id}"
                 echo 'image pushed to nexus'
             }
         }
