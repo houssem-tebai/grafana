@@ -21,7 +21,6 @@ pipeline {
                 echo 'build complete'
             }
         }
-        }
         stage('push to nexus') {
             steps {
                 echo 'Pushing to nexus private repo....'
