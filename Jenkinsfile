@@ -13,6 +13,19 @@ pipeline {
                 }
             }
         }
+        stage('Code Quality') {
+            steps {
+                withSonarQubeEnv('code-quality'){
+                    sh 'mvn clean package sonar:sonar'
+                }
+            }
+        }
+        stage("Quality Gate"){
+            def qg = waitForQualityGate()
+            if (qg.status != 'OK') {
+                error "Pipeline aborted due to quality gate failure: ${qg.status}"
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building....'
