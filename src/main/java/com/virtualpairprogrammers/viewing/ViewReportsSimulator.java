@@ -42,8 +42,11 @@ public class ViewReportsSimulator
 			while (milliseconds < timestamp)
 			{
 				milliseconds++;
-				else if (milliseconds % 24 == 0) {
+				if (milliseconds % 24 == 0) {
 					Thread.sleep(100);
+				}
+				else if (milliseconds % 24 == 1){
+					milliseconds=0;
 				}
 			}
 
@@ -52,14 +55,6 @@ public class ViewReportsSimulator
 		}
 		sc.close();
 		producer.close();
-
-		int foo(int a) {
-  			int b = 12;
-				else if (a == 1) {
-					return b;
-				}
-  			return b;  // Noncompliant
-		}
 	}
 
 	private static Map<Integer, String> courseKeys = Stream.of(new Object[][] {
