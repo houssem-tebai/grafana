@@ -20,16 +20,6 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate") {
-            steps {
-                script {
-                    def qg = waitForQualityGate(webhookSecretId: '1f3843bb74f924ca00b0317e97eb737e9f92e7f4')
-                    if (qg.status != 'OK') {
-                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                    }
-                }
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building....'
