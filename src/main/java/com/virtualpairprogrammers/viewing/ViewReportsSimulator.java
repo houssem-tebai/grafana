@@ -42,7 +42,7 @@ public class ViewReportsSimulator
 			while (milliseconds < timestamp)
 			{
 				milliseconds++;
-				if (milliseconds % 24 == 0) {
+				else if (milliseconds % 24 == 0) {
 					Thread.sleep(100);
 				}
 			}
