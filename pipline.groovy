@@ -1,6 +1,6 @@
 pipelineJob('grafana pipline') {
 
-    def repo = 'https://github.com/Jouda-Hidri/demo.git'
+    def repo = 'https://github.com/houssem-tebai/grafana'
    
     triggers {
         scm('*/5 * * * *')

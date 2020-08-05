@@ -39,10 +39,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying to Kubernetes'
-                sh "sed -i -r 's|smart-etech/grafana|smart-etech/grafana:${commit_id}|' grafana.yaml"
-                sh 'kubectl get all -n grafana'
-                sh 'kubectl apply -f grafana.yaml -n grafana'
-                sh 'kubectl get all -n grafana'
+                sh "sed -i -r 's|smart-etech/grafana|smart-etech/grafana:${commit_id}|' pre-grafana.yaml"
+                sh 'kubectl apply -f pre-grafana.yaml -n pre-deploy'
                 echo 'deployment complete'
                 
             }
