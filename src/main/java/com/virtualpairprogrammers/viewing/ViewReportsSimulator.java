@@ -44,10 +44,10 @@ public class ViewReportsSimulator
 				milliseconds++;
 				if (milliseconds % 24 == 0) {
 					Thread.sleep(100);
-				}
-				else if (milliseconds % 24 == 1){
+				} if (milliseconds % 24 == 1){
 					milliseconds=0;
 				}
+				
 			}
 
 			String courseName = courseKeys.get(courseKey);
